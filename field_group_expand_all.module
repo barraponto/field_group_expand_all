@@ -9,6 +9,18 @@
  * Implements hook_js_alter().
  */
 function field_group_expand_all_js_alter(&$javascript) {
-  // Swap out jQuery to use an updated version of the library.
-  $javascript['misc/jquery.js']['data'] = drupal_get_path('module', 'jquery_update') . '/jquery.js';
+  $fieldgroup_widgets = drupal_get_path('module', 'field_group') . '/field_group.js';
+  $fieldgroup_widgets_expand_all = drupal_get_path('module', 'field_group_expand_all') . '/field_group_expand_all.js';
+  $fieldgroup_widgets_expand_all_plugin = drupal_get_path('module', 'field_group_expand_all') . '/jquery.multiopenaccordion.js';
+  // Add our javascript file whenever field_group.js is added.
+  if (!empty($javascript[$fieldgroup_widgets]) ) {
+    if (empty($javascript[$fieldgroup_widgets_expand_all])) {
+      $javascript[$fieldgroup_widgets_expand_all] = array_merge(
+        drupal_js_defaults(), array('group' => JS_DEFAULT + 1, 'data' => $fieldgroup_widgets_expand_all));
+    }
+    if (empty($javascript[$fieldgroup_widgets_expand_all_plugin])) {
+      $javascript[$fieldgroup_widgets_expand_all_plugin] = array_merge(
+        drupal_js_defaults(), array('group' => JS_DEFAULT, 'data' => $fieldgroup_widgets_expand_all_plugin));
+    }
+  }
 }
