@@ -1,0 +1,6 @@
+name = Fieldgroup Expand All
+description = Adds options to expand every widget in a field group.
+dependencies[] = field_group
+package = fields
+core = 7.x
+files[] = tests/field_group_expand_all.test
