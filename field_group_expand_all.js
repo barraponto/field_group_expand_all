@@ -6,7 +6,6 @@
     execute: function (context, settings, type) {
       $('div.field-group-accordion-wrapper', context).once('fieldgroup-effects', function () {
         var wrapper = $(this);
-        console.log(wrapper);
 
         // Dynamically add a button (it wouldn't be useful without javascript anyway).
         $('<input />', {'id': 'field-group-expand-all', 'value': Drupal.t('Expand all'), 'type': 'button', 'click': function() {
