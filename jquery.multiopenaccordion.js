@@ -181,7 +181,7 @@
             if(typeof tabs != 'undefined') {
                 $this.children('div').each(function(index){
                     var $tab = $(this).prev('h3');
-                    if(tabs.hasObject(index)) {
+                    if($.inArray(index, tabs)) {
                         self._showTab($tab);
                     } else {
                         self._hideTab($tab);
@@ -242,21 +242,4 @@
         }
 
     });
-
-    // helper array has object function
-    // thanks to @Vinko Vrsalovic
-    // http://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array
-    Array.prototype.hasObject = (!Array.indexOf ? function (o) {
-        var l = this.length + 1;
-        while (l -= 1) {
-            if (this[l - 1] === o) {
-                return true;
-            }
-        }
-        return false;
-    }: function (o) {
-        return (this.indexOf(o) !== -1);
-    }
-                                );
-
 })(jQuery);
