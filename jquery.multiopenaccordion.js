@@ -181,7 +181,7 @@
             if(typeof tabs != 'undefined') {
                 $this.children('div').each(function(index){
                     var $tab = $(this).prev('h3');
-                    if($.inArray(index, tabs)) {
+                    if($.inArray(index, tabs) > -1) {
                         self._showTab($tab);
                     } else {
                         self._hideTab($tab);
